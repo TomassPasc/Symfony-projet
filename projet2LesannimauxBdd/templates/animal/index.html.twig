@@ -8,7 +8,14 @@
 
 {% block body %}
     {% for animal in lesAnimaux %}
-    {{ animal.nom }}
+        <div class="row align-items-center">
+            <div class="col-2 text-center">
+                <img src="{{asset('images/' ~ animal.image)}}">
+            </div>
+            <div class="col-auto">
+                {{ animal.nom }}
+            </div>
+        </div>
 
 
     {% endfor %}
