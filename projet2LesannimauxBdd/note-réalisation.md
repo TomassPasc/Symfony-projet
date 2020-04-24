@@ -278,3 +278,110 @@ fichier bas.html.twig:
 </html>
 ```
 
+<u>**29-Lister les animaux**</u>
+
+le controller:
+
+
+
+```php
+  public function index()
+
+  {
+
+​    $repository = $this->getDoctrine()->getRepository(Animal::class);
+
+​    $animaux = $repository->findAll();
+
+
+
+​    return $this->render('animal/index.html.twig',[
+
+​      "lesAnimaux" => $animaux
+
+​    ]);
+
+  }
+```
+
+
+
+<u>**avec injection de dépendance:**</u>
+
+on réccupère l'objet directement dans les paramètres de la fonction.
+
+```php
+  use App\Repository\AnimalRepository;
+
+
+public function index(AnimalRepository $repository)
+
+  {
+
+​    $animaux = $repository->findAll();
+
+
+
+​    return $this->render('animal/index.html.twig',[
+
+​      "lesAnimaux" => $animaux
+
+​    ]);
+
+  }
+
+}
+```
+
+
+
+boucle for pour la vue:
+
+```twig
+{% for animal in lesAnimaux %}
+
+        <div class="row align-items-center">
+
+            <div class="col-2 text-center">
+
+                <img src="{{asset('images/' ~ animal.image)}}">
+
+​      </div>
+
+            <div class="col-auto">
+
+​        <h2>{{ animal.nom }}</h2>
+
+                <div>{{ animal.description }}</div>
+
+​      </div>
+
+​    </div>
+
+  {% endfor %}
+```
+
+
+
+31 la page d'un animal:
+
+controller:
+
+```
+public function afficherAnimal(AnimalRepository $repository ,$id)
+
+  {
+
+​    $animal = $repository->find($id);
+
+
+
+​    return $this->render('animal/afficherAnimal.html.twig',[
+
+​      "unAnimal" => $animal
+
+​    ]);
+
+  }
+```
+
