@@ -4,6 +4,15 @@
 
 {% block monTitre %}Voici la liste des animaux{% endblock %}
 
+
+
 {% block body %}
+    {% for animal in lesAnimaux %}
+    {{ animal.nom }}
+
+
+    {% endfor %}
+
+
 
 {% endblock %}

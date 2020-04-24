@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Animal;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AnimalController extends AbstractController
 {
@@ -12,6 +13,11 @@ class AnimalController extends AbstractController
      */
     public function index()
     {
-        return $this->render('animal/index.html.twig');
+        $repository = $this->getDoctrine()->getRepository(Animal::class);
+        $animaux = $repository->findAll();
+
+        return $this->render('animal/index.html.twig',[
+            "lesAnimaux" => $animaux
+        ]);
     }
 }
