@@ -7,7 +7,23 @@
 
 
 {% block body %}
+<div class="row align-items-center">
+    <div class="col-2 text-center">
+        <img src="{{asset('images/' ~ unAnimal.image)}}">
+    </div>
+    <div class="col-auto">
+            <div>Description: {{ unAnimal.description }}</div>
+            <div>Poids: {{ unAnimal.poids }}</div>
+            <div>Dangereux:
+            {% if unAnimal.dangereux %}
+                <span class="badge badge-danger">OUI</span>
+            {% else %}
+                <span class="badge badge-success">NON</span>
+            {% endif %}
+            </div>
+    </div>
 
+</div>
 
 
 
