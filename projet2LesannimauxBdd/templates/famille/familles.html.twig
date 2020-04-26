@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Familles{% endblock %}
+{% block monTitre %}La liste des familles{% endblock %}
+{% block body %}
+{% for famille in familles %}
+    <h2 class="border-bottom border-primary">{{ famille.libelle|capitalize }}</h2>
+    <div>{{ famille.description }}</div>
+{% endfor %}
+{% endblock %}
