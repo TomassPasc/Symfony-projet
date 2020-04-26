@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Familles{% endblock %}
-{% block monTitre %}La liste des familles{% endblock %}
+{% block title %}Famille{% endblock %}
+{% block monTitre %}Famille {{ famille.libelle }}{% endblock %}
 {% block body %}
-{% for famille in familles %}
-    <h2 class="border-bottom border-primary"><a href="{{path('afficher_famille',{'id':famille.id})}}">{{ famille.libelle|capitalize }}</a></h2>
+
     <div>{{ famille.description }}</div>
     <div class="row">
         {% for animal in famille.animaux %}
@@ -17,7 +16,6 @@
                         <h2><a href="{{ path('afficher_animal',{'id': animal.id}) }}">{{ animal.nom }}</a></h2>
                         <div>{{ animal.description }}</div>
                     <div><a href="" class="btn btn-primary">{{ animal.famille.libelle}}</a></div>
-
                     </div>
                 </div>
             </div>
@@ -25,5 +23,5 @@
     </div>
 
 
-{% endfor %}
+
 {% endblock %}
