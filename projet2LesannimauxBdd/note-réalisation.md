@@ -363,11 +363,11 @@ boucle for pour la vue:
 
 
 
-31 la page d'un animal:
+**<u>31 la page d'un animal:</u>**
 
-controller:
+**controller:**
 
-```
+```php
 public function afficherAnimal(AnimalRepository $repository ,$id)
 
   {
@@ -385,3 +385,73 @@ public function afficherAnimal(AnimalRepository $repository ,$id)
   }
 ```
 
+**modification avec le converter:**
+
+ le converter sait qu'il doit aller chercher l'id dans le repository.
+
+```php
+ public function afficherAnimal(Animal $animal)
+
+  {
+
+
+​    return $this->render('animal/afficherAnimal.html.twig',[
+
+​      "unAnimal" => $animal
+
+​    ]);
+
+  }
+```
+
+**vue afficher un animal:**
+
+```twig
+{% block body %}
+
+<div class="row align-items-center">
+
+    <div class="col-2 text-center">
+
+        <img src="{{asset('images/' ~ unAnimal.image)}}">
+
+  </div>
+
+    <div class="col-auto">
+
+            <div>Description: {{ unAnimal.description }}</div>
+
+            <div>Poids: {{ unAnimal.poids }}</div>
+
+            <div>Dangereux:
+
+​      {% if unAnimal.dangereux %}
+
+​        <span class="badge badge-danger">OUI</span>
+
+​      {% else %}
+
+​        <span class="badge badge-success">NON</span>
+
+​      {% endif %}
+
+​      </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}
+```
+
+```css
+<span class="badge badge-danger">OUI</span>
+```
+
+pertmet d'afficher du rouge ou du vert.
