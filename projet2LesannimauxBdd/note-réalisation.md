@@ -496,3 +496,19 @@ Avec le AddContinent il y a deux actions qui sont faites en une. Le continent es
 
 
 
+**38 relation N.N** (entre personne et animal)
+
+-> créé l'entité personne qui possede un nom
+
+-> on a déja l'entité animal
+
+-> on crée l'entité dispose 
+
+
+
+<u>ajouter dans Dispose.php</u>
+
+```
+ \* @UniqueEntity(fields={"personne","animal"})
+```
+
