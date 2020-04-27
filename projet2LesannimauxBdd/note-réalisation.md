@@ -455,3 +455,44 @@ public function afficherAnimal(AnimalRepository $repository ,$id)
 ```
 
 pertmet d'afficher du rouge ou du vert.
+
+
+
+**32 relation 1.N**
+
+créer l'entité famille:
+
+```
+ bin/console make:entity Famille
+```
+
+
+
+générer fichier migration:
+
+```
+bin/console make:migration
+```
+
+migration en base:
+
+```
+$ bin/console doctrine:migration:migrate
+```
+
+mettre les données fixture en base:
+
+```
+bin/console doctrine:fixtures:load
+```
+
+
+
+**35.continent**
+
+Pour supprimer une entitée on suprrime les fichiers correspondant tout simplement.
+
+Avec le AddContinent il y a deux actions qui sont faites en une. Le continent est ajouté à l'animal et l'animal au continent. On aurait pu partir sur AddAnimal dans l'ajout du continent dans les fixtures c'est équivalent.
+
+
+
